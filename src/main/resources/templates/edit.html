@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/update/{id}(id=${user.id})}"
+      th:object="${user}"
+      method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{userName}" id="name" placeholder="Name">
+    <label for="pass">Password</label>
+    <input type="text" th:field="*{password}" id="pass" placeholder="Password">
+    <label for="admin">Admin</label>
+    <input type="checkbox" name="role" th:value="ROLE_ADMIN" id="admin">
+    <label for="user">User</label>
+    <input type="checkbox" name="role" th:value="ROLE_USER" id="user">
+    <input type="submit" value="Edit">
+</form>
+</body>
+</html>
