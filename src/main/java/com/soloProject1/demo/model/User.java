@@ -23,6 +23,9 @@ public class User {
     public User() {
     }
 
+    public User(String password) {
+    }
+
     public Integer getId() {
         return id;
     }

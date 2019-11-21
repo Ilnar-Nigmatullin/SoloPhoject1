@@ -36,7 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/home").access("hasRole('ROLE_USER')")
                 .and()
@@ -46,9 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and()
                 .logout().logoutSuccessUrl("/login?logout")
+
                 .and()
-                .exceptionHandling().accessDeniedPage("/403")
-                .and().csrf().disable();
+                .exceptionHandling().accessDeniedPage("/403");
     }
 
     @Autowired

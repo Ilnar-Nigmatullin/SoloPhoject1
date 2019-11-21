@@ -30,17 +30,20 @@
             </a>
         </td>
         <td>
-            <button><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></button>
+            <button><a th:href="@{/admin/edit/{id}(id=${user.id})}">Edit</a></button>
         </td>
         <td>
-            <button><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></button>
+            <button><a th:href="@{/admin/delete/{id}(id=${user.id})}">Delete</a></button>
         </td>
     </tr>
     </tbody>
 </table>
 <button>
-    <a href="/signup">Add User</a>
+    <a th:href="@{/home}">Home Page</a>
 </button>
-<button><a href th:href="@{/logout}">Logout</a></button>
+<button>
+    <a th:href="@{/admin/signup}">Add User</a>
+</button>
+<button><a th:href="@{/logout}">Logout</a></button>
 </body>
 </html>

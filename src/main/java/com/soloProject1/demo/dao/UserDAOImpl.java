@@ -4,8 +4,8 @@ import com.soloProject1.demo.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -13,11 +13,6 @@ public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
-
-//    @PersistenceContext
-//    public UserDAOImpl (EntityManager entityManager) {
-//        this.entityManager = entityManager;
-//    }
 
     @SuppressWarnings("unchecked")
     public List<User> readUsers() {
@@ -29,6 +24,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public void editUser(User user) {
+
         entityManager.merge(user);
     }
 
@@ -43,9 +39,13 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public User findByUserName(String userName) {
-        //добавить TryCatch
-        User users = (User) entityManager.createQuery("from User where username= :username")
-                .setParameter("username", userName).getSingleResult();
-        return users;
+        User user = null;
+        try {
+            user = (User) entityManager.createQuery("from User where username= :username")
+                    .setParameter("username", userName).getSingleResult();
+        } catch (NoResultException nre) {
+            nre.printStackTrace();
+        }
+        return user;
     }
 }
