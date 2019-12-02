@@ -5,14 +5,11 @@ import com.soloProject1.demo.model.User;
 import com.soloProject1.demo.service.RoleService;
 import com.soloProject1.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,25 +32,18 @@ public class AdminController {
 
     /*таблица всех юзеров*/
     @GetMapping("/allusers")
-    public String adminPage(Model model) {
+    public String adminPage(Model model, User user) {
         List<User> users = userService.readUsers();
         model.addAttribute("users", users);
+        model.addAttribute("user", user);
 
         return "admin";
-    }
-
-    /*Страница добавления юзера*/
-    @GetMapping("/signup")
-    public String createPage(User user, Model model) {
-        model.addAttribute("user", user);
-        return "create";
     }
 
     /*метод добавление юзера*/
     @PostMapping("/addUser")
     public String createUser(User user,
                              @RequestParam(value = "role", defaultValue = "ROLE_USER") String[] roleArr) {
-
         Set<Role> roles = new HashSet<>();
         for (String s : roleArr) {
             Role roleUser = roleService.getRoleByName(s);
@@ -65,20 +55,11 @@ public class AdminController {
         return "redirect:/admin/allusers";
     }
 
-    /*Страница изменения юзера*/
-    @GetMapping("/edit/{id}")
-    public String editPage(@PathVariable("id") int id, Model model) {
-        User user = userService.findUserById(id);
-        model.addAttribute("user", user);
-
-        return "edit";
-    }
-
     /*Метод изменения Юзера*/
     @PostMapping("/update/{id}")
     public String editUser(@PathVariable("id") int id, User user,
                            @RequestParam(value = "role", defaultValue = "ROLE_USER") String[] roleArr) {
-            User user1 = userService.findUserById(id);
+        User user1 = userService.findUserById(id);
         if (user.getPassword().equals(user1.getPassword())) {
             passwordEncoder.upgradeEncoding(user.getPassword());
         } else {

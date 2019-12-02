@@ -7,24 +7,50 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <title>Spring Security Example </title>
+
+    <link href="../static/css/admin-style.css" th:href="@{/css/admin-style.css}" rel="stylesheet"/>
+
+    <title>Login</title>
+
+    <style>
+        body {
+            background: #efefef;
+        }
+
+        .login-form {
+            width: 260px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+
+        .btn-signin {
+            background: #2869a0;
+            color: white;
+        }
+
+        .btn-signin:hover {
+            background-color: #3F75A0;
+            color: white;
+        }
+
+    </style>
 </head>
 
 
 <body>
-<!--<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>-->
-<div class="container">
+<div class="login-form">
     <form action="#" th:action="@{/login}" method="post">
-        <input type="text" name="username"/>
-        <input type="text" name="password"/>
-       <button>
-        <input type="submit" value="Sign In"/>
-       </button>
+        <h2>Please sign in</h2>
+        <div>
+            <input type="text" class="form-control" name="username" placeholder="Username"/>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="password" placeholder="Password"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-signin btn-block">Sign in</button>
+        </div>
     </form>
 </div>
 
