@@ -1,5 +1,6 @@
 package com.soloProject1.demo.controller;
 
+import com.google.gson.Gson;
 import com.soloProject1.demo.model.Role;
 import com.soloProject1.demo.model.User;
 import com.soloProject1.demo.service.RoleService;
@@ -36,7 +37,6 @@ public class AdminController {
         List<User> users = userService.readUsers();
         model.addAttribute("users", users);
         model.addAttribute("user", user);
-
         return "admin";
     }
 

@@ -1,4 +1,4 @@
-$(function() {
+(function ($) {
     $(function () {
         $('ul.tabs__caption').on('click', 'li:not(.active)', function () {
             $(this)
@@ -12,4 +12,4 @@ $(function() {
                 .addClass('active');
         });
     });
-});
+})(jQuery);
