@@ -29,11 +29,6 @@ public class AdminRestController {
 
     @PostMapping("/create")
     public void createUser(@Valid @RequestBody User user) {
-        Set<Role> roles = new HashSet<>();
-        Role roleUser = roleService.getRoleByName("ROLE_ADMIN");
-        roles.add(roleUser);
-        user.setRoles(roles);
-
         userService.addUser(user);
     }
 
