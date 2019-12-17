@@ -24,7 +24,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public void editUser(User user) {
-
         entityManager.merge(user);
     }
 

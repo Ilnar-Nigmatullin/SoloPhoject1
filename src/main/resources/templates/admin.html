@@ -51,13 +51,13 @@
 
             <ul class="tabs__caption nav nav-tabs">
                 <li class="active nav-item">
-                    <a class="nav-link" href="#" id="resetTable">User table</a></li>
+                    <a class="nav-link"  data-toggle="tab">User table</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">New user</a>
+                    <a class="nav-link" data-toggle="tab">New user</a>
                 </li>
             </ul>
 
-            <div class="tabs__content active"> <!--Содержимое блока таблицы-->
+            <div id="resetTab" class="tabs__content active"> <!--Содержимое блока таблицы-->
 
                 <div class="table-name">        <!--Имя таблицы-->
                     <h6>All users</h6>
@@ -102,29 +102,24 @@
                                                        id="updateUserPass"
                                                        class="form-control text-center"
                                                        required>
-                                                <!--<div class="check-box-form text-center">
+
+                                                        <!--UPDATE РОЛИ-->
+                                                <div class="check-box-form text-center">
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="checkbox"
-                                                               name="role"
-                                                               value="ROLE_ADMIN"
-                                                               id="updateAdminRole">
-                                                        <label class="form-check-label" for="updateAdminRole"><a
-                                                                class="font-weight-bold">Admin</a></label>
+                                                               id="updateAdminRole" value="ROLE_ADMIN">
+                                                        <label class="form-check-label" for="updateAdminRole">
+                                                            <a class="font-weight-bold">Admin</a>
+                                                        </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="checkbox"
-                                                               name="role"
-                                                               value="ROLE_USER"
-                                                               id="updateUserRole">
-                                                        <label class="form-check-label" for="updateUserRole"><a
-                                                                class="font-weight-bold">User</a></label>
+                                                               id="updateUserRole" value="ROLE_USER">
+                                                        <label class="form-check-label" for="updateUserRole">
+                                                            <a class="font-weight-bold">User</a>
+                                                        </label>
                                                     </div>
-                                                </div>-->
-                                                <select id="updateUserRole" class="form-control text-center" type="text"
-                                                        name="role">
-                                                    <option value="user">user</option>
-                                                    <option value="admin">admin</option>
-                                                </select>
+                                                </div>
                                                 <div class="col-md-4"></div>
                                             </div>
                                         </div>
@@ -167,21 +162,17 @@
                                 <label for="addPassword"><a class="font-weight-bold ">Password</a></label>
                                 <input type="text" class="form-control" id="addPassword" placeholder="Password">
                             </div>
-                            <!--<div class="check-box-form text-center">
+                            <div class="check-box-form text-center">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="role" value="ROLE_ADMIN" id="addRoleAdmin">
+                                    <input class="form-check-input" type="checkbox" id="addRoleAdmin"
+                                           value="ROLE_ADMIN">
                                     <label class="form-check-label" for="addRoleAdmin"><a class="font-weight-bold">Admin</a></label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="role" value="ROLE_USER" id="addRoleUser">
+                                    <input class="form-check-input" type="checkbox" id="addRoleUser" value="ROLE_USER">
                                     <label class="form-check-label" for="addRoleUser"><a class="font-weight-bold">User</a></label>
                                 </div>
-                            </div>-->
-                            <select id="addRole" class="form-control text-center" type="text"
-                                    name="role">
-                                <option value="ROLE_USER">user</option>
-                                <option value="ROLE_ADMIN">admin</option>
-                            </select>
+                            </div>
                             <button type="submit" class="btn btn-success add-user-btn text-center" id="addFormUser">
                                 Add new user
                             </button>
@@ -193,18 +184,20 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../js/admin-script.js"></script> <!---->
-<script src="../js/JSON-to-Table.min.1.0.0.js"></script>
-<script src="../js/script.js"></script>
+<script src="../js/tab-panel.js"></script> <!---->
+<script src="../js/allUsers.js"></script>
+<script src="../js/addUser.js"></script>
+<script src="../js/updateUser.js"></script>
+<script src="../js/editModalWindow.js"></script>
+<script src="../js/deleteUser.js"></script>
 
 
 </body>
