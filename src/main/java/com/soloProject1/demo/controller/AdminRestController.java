@@ -18,7 +18,7 @@ public class AdminRestController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public AdminRestController(UserService userService, BCryptPasswordEncoder passwordEncoder ) {
+    public AdminRestController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -51,5 +51,10 @@ public class AdminRestController {
     public void deleteUser(@PathVariable(value = "id") int id) {
         User user = userService.findUserById(id);
         userService.deleteUser(user);
+    }
+
+    @GetMapping("/find/userByName")
+    public User findByUserName(@PathVariable String username) {
+        return userService.findByUserName(username);
     }
 }
