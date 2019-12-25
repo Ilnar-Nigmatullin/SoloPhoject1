@@ -6,6 +6,7 @@ import com.soloProject1.demo.service.RoleService;
 import com.soloProject1.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,10 +16,10 @@ import java.util.*;
 @RequestMapping("/admin/rest")
 public class AdminRestController {
     private UserService userService;
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AdminRestController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
+    public AdminRestController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -53,7 +54,7 @@ public class AdminRestController {
         userService.deleteUser(user);
     }
 
-    @GetMapping("/find/userByName")
+    @GetMapping("/find/byUserName/{username}")
     public User findByUserName(@PathVariable String username) {
         return userService.findByUserName(username);
     }
