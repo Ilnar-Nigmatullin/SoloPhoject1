@@ -34,17 +34,17 @@ public class AdminRestController {
         userService.addUser(user);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     public void updateUser(
-            @PathVariable(value = "id") int id, @Valid @RequestBody User userDetails) {
-        User user = userService.findUserById(id);
+            /*@PathVariable(value = "id") int id, @Valid */@RequestBody User user) {
+/*        User user = userService.findUserById(id);
         if (user.getPassword().equals(userDetails.getPassword())) {
             passwordEncoder.upgradeEncoding(userDetails.getPassword());
         } else {
             user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
         }
         user.setUserName(userDetails.getUserName());
-        user.setRoles(userDetails.getRoles());
+        user.setRoles(userDetails.getRoles());*/
         userService.editUser(user);
     }
 
