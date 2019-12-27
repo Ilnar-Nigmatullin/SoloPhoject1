@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     public void editUser(User user) {
+        User previousUser = userDAO.findUserById(user.getId());
+        if(previousUser.getPassword().equals(user.getPassword())) {
+            passwordEncoder.upgradeEncoding(user.getPassword());
+        } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userDAO.editUser(user);
     }
 

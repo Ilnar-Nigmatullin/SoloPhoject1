@@ -1,16 +1,13 @@
 package com.soloProject1.demo.controller;
 
-import com.soloProject1.demo.model.Role;
 import com.soloProject1.demo.model.User;
-import com.soloProject1.demo.service.RoleService;
 import com.soloProject1.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/rest")
@@ -35,16 +32,7 @@ public class AdminRestController {
     }
 
     @PutMapping("/update")
-    public void updateUser(
-            /*@PathVariable(value = "id") int id, @Valid */@RequestBody User user) {
-/*        User user = userService.findUserById(id);
-        if (user.getPassword().equals(userDetails.getPassword())) {
-            passwordEncoder.upgradeEncoding(userDetails.getPassword());
-        } else {
-            user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
-        }
-        user.setUserName(userDetails.getUserName());
-        user.setRoles(userDetails.getRoles());*/
+    public void updateUser(@RequestBody User user) {
         userService.editUser(user);
     }
 
